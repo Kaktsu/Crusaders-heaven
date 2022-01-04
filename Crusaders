@@ -83,6 +83,17 @@ UseSection:NewButton("Remove Stand", "Removes your stand", function()
     Event:FireServer() 
 end)
 
+UseSection:NewButton("Spin", "Spin for cosmetics", function()
+    local A_1 = "Coin"
+    local Event = game:GetService("Workspace").Jotaro6.Jotaro
+    Event:FireServer(A_1)
+end)
+
+UseSection:NewButton("Buy Coin", "Purchase a coin", function()
+    local Event = game:GetService("Workspace").CoinExchange.Coin
+    Event:FireServer()
+end)
+
 end
 
 ___Button.MouseButton1Click:Connect(function()
