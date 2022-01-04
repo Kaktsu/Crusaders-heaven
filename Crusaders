@@ -1,0 +1,97 @@
+wait()
+local ___SG = Instance.new("ScreenGui")
+___SG.Parent = game:GetService("CoreGui")
+
+local ___Frame = Instance.new("Frame")
+___Frame.BackgroundColor3 = Color3.fromRGB(20, 165, 255)
+___Frame.BackgroundTransparency = 0.2
+___Frame.BorderSizePixel = 0
+___Frame.Position = UDim2.new(0.5,-250,1,-425)
+___Frame.Size = UDim2.new(0,500,0,150)
+___Frame.Parent = ___SG
+
+local ___Shadow = Instance.new("Frame")
+___Shadow.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+___Shadow.BackgroundTransparency = 0.35
+___Shadow.BorderSizePixel = 0
+___Shadow.Position = UDim2.new(0,0,1,0)
+___Shadow.Size = UDim2.new(1,0,0,3)
+___Shadow.Parent = ___Frame
+
+local ___Button = Instance.new("TextButton")
+___Button.BackgroundColor3 = Color3.fromRGB(44, 139, 255)
+___Button.BackgroundTransparency = 0
+___Button.BorderSizePixel = 0
+___Button.Position = UDim2.new(0,50,0,82)
+___Button.Size = UDim2.new(0,400,0,50)
+___Button.Font = Enum.Font.Cartoon
+___Button.Text = "Continue"
+___Button.TextSize = 24
+___Button.TextColor3 = Color3.fromRGB(255,255,255)
+___Button.Parent = ___Frame
+
+local ___Input = Instance.new("TextBox")
+___Input.BackgroundColor3 = Color3.fromRGB(19, 137, 195)
+___Input.BackgroundTransparency = 0.2
+___Input.BorderSizePixel = 0
+___Input.Position = UDim2.new(0,0,0,20)
+___Input.Size = UDim2.new(1,0,0,50)
+___Input.Font = Enum.Font.Cartoon
+___Input.PlaceholderColor3 = Color3.fromRGB(255,255,255)
+___Input.PlaceholderText = "Enter your key here"
+___Input.Text = ""
+___Input.TextSize = 22
+___Input.TextColor3 = Color3.fromRGB(255,255,255)
+___Input.Parent = ___Frame
+
+
+
+local Key = "2rayu" --Change it to anything
+
+local function YourCode() --Your code goes in this function
+
+    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Crusader's Heaven", "DarkTheme")
+local Farming = Window:NewTab("Farming")
+local Use = Window:NewTab("Use")
+local FarmingSection = Farming:NewSection("Farm")
+local UseSection = Use:NewSection("Use")
+FarmingSection:NewToggle("Money", "Farming ", function(v)
+    getgenv().autostandtp = v
+    while true do
+        if not getgenv().autostandtp then return end
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Money.Handle.CFrame
+        wait()
+    end
+end)
+FarmingSection:NewToggle("StandArrow", "Farming ", function(v)
+    getgenv().automoneytp = v
+    while true do
+        if not getgenv().automoneytp then return end
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace:FindFirstChild("Stand Arrow").Handle.CFrame
+        wait()
+    end
+end)
+
+UseSection:NewButton("Use Arrow", "Uses arrow from your inv", function()
+    local Event = game:GetService("ReplicatedStorage").ItemEvent.StandArrow
+    Event:FireServer()
+end)
+
+UseSection:NewButton("Remove Stand", "Removes your stand", function()
+    local Event = game:GetService("Workspace").Pucci.Pucci
+    Event:FireServer() 
+end)
+
+end
+
+___Button.MouseButton1Click:Connect(function()
+if ___Input.Text == Key then
+___SG:Destroy()
+YourCode()
+else
+___Button.Text = "Error!"
+wait(0.8)
+___Button.Text = "Continue"
+end
+end)
